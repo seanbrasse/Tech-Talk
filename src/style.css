@@ -1,0 +1,149 @@
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .inputSection {
+    width: 90% !important;
+  }
+  .inputs {
+    width: 90% !important;
+  }
+  .comment {  
+    width: 90% !important;
+  }
+  .submit {
+    min-width: 30% !important;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  color: white;
+  background-color:#0688BF;
+  margin-bottom: 30px;
+}
+
+.chat {
+  color: #FFD14F;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  border-radius: 10px;
+  margin: 10px;
+  color: red;
+  opacity: 0.8;
+}
+
+textarea {
+  overflow-y: hidden;
+  margin: 10px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+  text-align: left;
+  resize: none;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 400px;
+  margin: 10px;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.messageInput { 
+  overflow-y: scroll;
+  border: 1.5px solid #46B8E3;
+}
+
+.nameInput { 
+  border: 1.5px solid #46B8E3;
+}
+
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 150px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.submit:hover {
+  color:#0688BF
+}
+
+.commentTitle {
+  color: #0688BF;
+  margin: 50px 0 0px 0;
+
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  border-radius: 10px;
+  border: 1px solid #46B8E3;
+  padding: 0 10px 0 10px;
+  margin: 20px; 
+}
+
+.message {
+  margin: 25px 20px 5px 20px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.trash {
+  height: 20px;
+  margin: 0 10px 0 15px;
+  color: #FFD14F;
+}
+
+.trash:hover {
+  color:#0688BF
+}
+
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.noComments {
+  margin-top: 50px;
+}

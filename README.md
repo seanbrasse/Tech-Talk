@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Front-end Choose Your Own Adventure Take-Home
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Design and build a comments feed:
 
-## Available Scripts
+- [ ] that displays all comments  
+- [ ] notifies a user in real-time when new comments are added
 
-In the project directory, you can run:
+Here is the data schema for a Comment:
+* id: INTEGER
+* name: TEXT
+* created: DATETIME
+* message: TEXT
 
-### `npm start`
+Here are the API endpoints:
+* Create a comment: /createComment (POST)
+* Retrieve all comments: /getComments (GET)
+* Retrieve a comment: /getComment (GET)
+* Delete all comments: /deleteComments (DELETE)
+  * This is useful for purging data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a basic wireframe, you can change the layout. While you won't be screened as a product designer, make sure you build a good user experience. If you decide to use a third-party design system, be prepared to discuss your decision.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Basic wireframe](wireframe.png)
 
-### `npm test`
+- [ ] Please write unit tests and handle errors where you see fit.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Engineering Style
 
-### `npm run build`
+We do not expect you to have expertise in all the topics that encapsulate front-end web development. We recognize that some folks are specialists and others are generalists!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Specialist
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If there's a particular topic you enjoy, you can focus your assignment solution on that!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Some examples include:
+* Performance optimizations
+* Accessibility
+* Integration testing
 
-### `npm run eject`
+### Generalist
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [ ] If you're a generalist, you can focus more on building the minimum viable product described above with the wireframe!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Interview Details
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We have already set up an API client for a Node Express server that stores comments in SQLite.
 
-## Learn More
+You have the option of doing the assignment with or without a front-end JS framework.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If you decide to use a framework, we recommend the following boilerplates:
+* [facebook/create-react-app](https://github.com/facebook/create-react-app)
+* [vuejs/vue-cli](https://github.com/vuejs/vue-cli)
+* [angular/angular-cli](https://github.com/angular/angular-cli)
+* [ember-cli/ember-cli](https://github.com/ember-cli/ember-cli)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Be prepared to have a discussion about your implementation. Here are some example discussion questions:
+- [ ] How can you optimize fetching new comments in real-time?
+- [ ] Are there any restrictions we should place on the comment input?
 
-### Code Splitting
+We recommend spending up to four hours on this assignment. If you don't get every piece you hoped completed done in the timeframe, that's alright! We'll be having an hour long discussion on your thought processes and where you might spend more time, and that discussion is a key part of our evaluation!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Usage
 
-### Analyzing the Bundle Size
+### Run in Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+$ npm install
+$ npm run dev
+```
 
-### Making a Progressive Web App
+### Thoughts
+  - Sqlite allows us to use a database without a server to host it. We should be able to deploy this?
+  - I wanted my comments feed to show the most recent comments at the top. I originally had them in order of oldest to newest, but it didn't make a lot of sense for the app's usecase. I first reversed the comment list, however I chose to instead get the data list directly from the database already sorted correctly by date. This was a small optimization that could be more useful on larger scale datasets. 
+   
+### Things I Want to Add
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [ ] Show the text limit for comments
+- [ ] Restrict commenting if one of the fields is empty. Maybe an error message
+- [ ] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
+- [ ] The wireframe showed dates within the current week as days of the week with their time, and anthing else as a date and the time. 
 
-### Advanced Configuration
+### Struggles
+  - CSS :(
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
