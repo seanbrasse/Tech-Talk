@@ -84,6 +84,14 @@ Apologies in advance, I didn't want to spend too much time on this issue
 
 ----------------------
 
+### Screenshots
+![Screenshot 2023-03-07 at 6 46 59 PM](https://user-images.githubusercontent.com/43007609/223582084-91eee2b7-4cdc-41be-ae29-bc755d86600b.png)
+![Screenshot 2023-03-07 at 6 48 17 PM](https://user-images.githubusercontent.com/43007609/223582376-6596d27f-3e5b-4724-9fa3-80d67bf6ce80.png)
+![Screenshot 2023-03-07 at 6 48 22 PM](https://user-images.githubusercontent.com/43007609/223582022-c1b37b65-712d-4cfd-99ae-31a7caba0717.png)
+![Screenshot 2023-03-07 at 6 48 44 PM](https://user-images.githubusercontent.com/43007609/223582018-4907369c-31b0-48cf-89d6-9f8cc2ea57b7.png)
+![Screenshot 2023-03-07 at 6 56 27 PM](https://user-images.githubusercontent.com/43007609/223582690-5d2eda7d-0d9d-4350-a72b-998c8cd381c7.png)
+
+
 ### Optimizations I Implemented
 
 - Sorted comments in reverse chronological order to improve user experience. 
@@ -112,6 +120,7 @@ Apologies in advance, I didn't want to spend too much time on this issue
     - Appending the local state of comments to my newly created comments was an issue because I was sorting newly creaded comments in order of oldest to newest, so they would appear under my entire list, which escaped me for a little too long
   - Maintaining the local state of comments introduced a new issue: tracking id's for deleting comments. This was something I'll want to fix in the future. Deleting is currently a little wierd, you need to refresh first to sync with the database comments, otherwise the components will reappear on refresh. One theory for fixing this is making an api to call the "MAX" query function on commentSection's initial render within our useEffect hook.
       - This could also be fixed by storing a unique id in addition to the sqlite ascending id with each entry. This way, id's could be created with the comment and sent up to the database immediatley.
-      - I think the delete issue also led to issues in unit tests involving deleting function which makes sense 
+      - I think the delete issue also led to issues in unit tests involvin![Uploading Screenshot 2023-03-07 at 6.49.02 PM.png…]()
+g deleting function which makes sense 
   - Unit tests: writing unit tests is not my strongsuit and I'm hoping and working towards to get better at it. This app was tested manually and with some unit tests. It's very far from perfect
 
