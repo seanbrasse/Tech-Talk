@@ -15,7 +15,7 @@ const Comment = ({ id, name, title, message, created, onDelete}) => {
             <p className='message'>{message}</p>
             <div className='author'>
                 <h4>{name} on {formatDate(created)}</h4>
-                <FontAwesomeIcon className='trash' icon={faTrash} onClick={handleDelete} />
+                <FontAwesomeIcon className='trash' icon={faTrash} onClick={handleDelete} data-testid="delete-button" />
             </div>
         </div>
     )

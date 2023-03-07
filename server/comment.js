@@ -18,7 +18,12 @@ class Comment {
     return this.dataAccessObject.run(
       'DELETE FROM comments WHERE id = ?',
       [id]
-    );
+    ).then(result => {
+      const success = result.changes > 0;
+      return { success };
+    }).catch(error => {
+      return { success: false, error };
+    });
   }  
 
   deleteComments() {

@@ -2,8 +2,8 @@
 
 Design and build a comments feed:
 
-- [ ] that displays all comments  
-- [ ] notifies a user in real-time when new comments are added
+- [x] that displays all comments  
+- [x] notifies a user in real-time when new comments are added
 
 Here is the data schema for a Comment:
 * id: INTEGER
@@ -22,7 +22,7 @@ This is a basic wireframe, you can change the layout. While you won't be screene
 
 ![Basic wireframe](wireframe.png)
 
-- [ ] Please write unit tests and handle errors where you see fit.
+- Please write unit tests and handle errors where you see fit.
 
 ## Engineering Style
 
@@ -39,7 +39,7 @@ Some examples include:
 
 ### Generalist
 
-- [ ] If you're a generalist, you can focus more on building the minimum viable product described above with the wireframe!
+- If you're a generalist, you can focus more on building the minimum viable product described above with the wireframe!
 
 
 ## Interview Details
@@ -55,37 +55,63 @@ If you decide to use a framework, we recommend the following boilerplates:
 * [ember-cli/ember-cli](https://github.com/ember-cli/ember-cli)
 
 Be prepared to have a discussion about your implementation. Here are some example discussion questions:
-- [ ] How can you optimize fetching new comments in real-time?
-- [ ] Are there any restrictions we should place on the comment input?
+- How can you optimize fetching new comments in real-time?
+- Are there any restrictions we should place on the comment input?
 
 We recommend spending up to four hours on this assignment. If you don't get every piece you hoped completed done in the timeframe, that's alright! We'll be having an hour long discussion on your thought processes and where you might spend more time, and that discussion is a key part of our evaluation!
 
 ## Usage
 
-### Run in Development
+### Run in Development and Run Test
 
 ```
 $ npm install
 $ npm run dev
+
+or 
+
+$ npm install 
+$ npm run test
 ```
+### Please Note Before Running Tests:
+I ran into an issue running unit tests. In order to run server.test.js, please swap line 8 of /server/index.js with 
+export const app = express();
 
-### Thoughts
-  - Sqlite allows us to use a database without a server to host it. We should be able to deploy this?
-  - I wanted my comments feed to show the most recent comments at the top. I originally had them in order of oldest to newest, but it didn't make a lot of sense for the app's usecase. I first reversed the comment list, however I chose to instead get the data list directly from the database already sorted correctly by date. This was a small optimization that could be more useful on larger scale datasets.
-  - Comments created and stored in my local comments state won't have the time stamp that comes from the database immediately.  
+to run the app, swap line 8 of /server/index.js back to 
+const app = express(); (this is the default)
+
+Apologies in advance, I didn't want to spend too much time on this issue
+
+----------------------
+
+### Optimizations I Implemented
+
+- Sorted comments in reverse chronological order to improve user experience. 
+  - At first I got the data as a list of objects and then reversed it. I ended up pulling the data in order of earliest to latest date directly from the database, making reversing the list unecessary. This was a small optimization that could be more useful on larger datasets.
+
+- Implemented client-side caching to reduce API requests and speed up app responsiveness.
+  - I did my best to implement client-side caching, by storing new comments locally on the client-side (in my React state) after my initial fetch from the database. New comments in my commentlist were then rendered from my state, instead of pulling data from the database again, reducing unecessary API requests. This worked really nicely, though it did lead to new kinds of problems down the line.
    
-### Things I Want to Add
+### Additional Features to Add
 
-- [ ] Show the text limit for comments
-- [ ] Restrict commenting if one of the fields is empty. Maybe an error message
-- [ ] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
-- [x] The wireframe showed dates within the current week as days of the week with their time, and anthing else as a date and the time. 
+  - Display maximum comment length to help users compose their comments effectively.
+  - Allow users to delete comments and implement a "delete all comments" function.
+  - Add an auto-scroll feature and allow users to upload media files.
+  - Enhance input restrictions to disallow non-meaningful content.
+  - Investigate periodic posting of data to optimize app speed for larger datasets.
+  - [x] Display dates of comments in a more readable format.
+  - [x] Prevent empty fields when submitting comments and display an error message.
 
-### Struggles
-  - CSS :(
-  - Getting the CommentSection component to update its state when adding a comment from my input component
-    - Excessive fetching from the database (fixed by removing comments from the dependency array on my useEffect hook that got comments from the db)
-    - Getting the the data from the database only initially, and then maintaining a local state of comments for newly created comments
-    - Appending a local state of comments to my newly created comments was an issue because I was sorting newly creaded comments in order of oldest to newest, so they would appear under my entire list, which threw me for a while
-    - Maintaining the local state of comments introduced a new issue, tracking id's for deleting comments. This was something I'll want to fix in the future. Deleting is currently a little wierd, you need to refresh first to sync with the database comments, otherwise the components will reappear on refresh. 
+### Challenges I Overcame:
+  - CSS :( 
+  - Solved an issue with updating the CommentSection component state by removing excessive fetching from the database.
+    - Originally I didn't even know this was a problem until I left the webpage alone for a few minutes, came back, and new components weren't automatically rendering. Rerenders in React can be caused by state changes. 
+    - I came up with a solution to trigger a state change in my CommentSection component, from my Input component. As they aren't parent or child components to eachother, I had to pass data from Input up to my App component and down to CommentSection
+    - I then noticed excessive fetching from the database when looking at my Network tab (I this fixed by removing comments from the dependency array on my useEffect hook that fetched comments from the db, and ensuring the hook only fetched data on initial render)
+    - Maintaining a local state of comments for newly created comments was necessary for triggering rerenders of my commentSection
+    - Appending the local state of comments to my newly created comments was an issue because I was sorting newly creaded comments in order of oldest to newest, so they would appear under my entire list, which escaped me for a little too long
+  - Maintaining the local state of comments introduced a new issue: tracking id's for deleting comments. This was something I'll want to fix in the future. Deleting is currently a little wierd, you need to refresh first to sync with the database comments, otherwise the components will reappear on refresh. One theory for fixing this is making an api to call the "MAX" query function on commentSection's initial render within our useEffect hook.
+      - This could also be fixed by storing a unique id in addition to the sqlite ascending id with each entry. This way, id's could be created with the comment and sent up to the database immediatley.
+      - I think the delete issue also led to issues in unit tests involving deleting function which makes sense 
+  - Unit tests: writing unit tests is not my strongsuit and I'm hoping and working towards to get better at it. This app was tested manually and with some unit tests. It's very far from perfect
 

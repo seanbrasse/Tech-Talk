@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import React, {useState} from 'react'
 import { createComment } from '../utils'
 import TextInput from './TextInput'
 
@@ -29,6 +29,7 @@ const Input = ({handleNewComment}) => {
       };
 
     const handleSubmit = (event) => {
+      console.log("Clicked submit")
       if (!name || !message){    
         setShowPopup(true)
         return;
