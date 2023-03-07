@@ -1,7 +1,12 @@
 import { Api } from "./api";
 
 export const formatDate = (created) => {
-    const date = new Date(`${created} UTC`); //This should ensure the date is interpreted at UTC and is more easily converted
+    let date;
+    if (created) { //Since we are storing new comments in our local state and not fetching them, we need to append the date to them. 
+        date = new Date(`${created} UTC`);
+    } else {
+        date = new Date();
+    }
     const currentDate = new Date();
     const daysAgo = Math.ceil((currentDate - date) / (1000 * 60 * 60 * 24));
 
@@ -25,6 +30,7 @@ export const createComment = async (name, title, message) => {
   try {
     // Call the post method of the Api component
     const response = await Api.post('http://localhost:3001/createComment', body);
+    console.log(`Posted ${body.name}'s comment to the db`)
     return response.data;
   } catch (error) {
     console.log(error);

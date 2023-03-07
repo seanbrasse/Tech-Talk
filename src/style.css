@@ -20,6 +20,11 @@
   .submit {
     min-width: 30% !important;
   }
+  .author {
+    display: flex;
+    align-items: center;
+    align-self: center !important;
+  }
 }
 
 .nav {
@@ -117,6 +122,7 @@ textarea {
 
 .message {
   margin: 25px 20px 5px 20px;
+  text-align: left;
 }
 
 .author {

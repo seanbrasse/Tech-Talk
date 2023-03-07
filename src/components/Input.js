@@ -59,8 +59,8 @@ const Input = ({handleNewComment}) => {
                   value = {title} 
                   placeholder = {"Add your title here (optional)"}
                   className = "nameInput" 
-                  maxChar = {70} 
-                  rows = {1} 
+                  maxChar = {160} 
+                  rows = {2} 
                   onChange = {handleTitleChange}
               />
               <TextInput
@@ -79,7 +79,7 @@ const Input = ({handleNewComment}) => {
               )}
           <button className='submit' onClick={(event) => handleSubmit(event)}>
                   <h2>Comment</h2>
-              </button>
+          </button>
         </section>
     )
 }

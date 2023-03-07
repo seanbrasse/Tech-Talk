@@ -71,16 +71,21 @@ $ npm run dev
 
 ### Thoughts
   - Sqlite allows us to use a database without a server to host it. We should be able to deploy this?
-  - I wanted my comments feed to show the most recent comments at the top. I originally had them in order of oldest to newest, but it didn't make a lot of sense for the app's usecase. I first reversed the comment list, however I chose to instead get the data list directly from the database already sorted correctly by date. This was a small optimization that could be more useful on larger scale datasets. 
+  - I wanted my comments feed to show the most recent comments at the top. I originally had them in order of oldest to newest, but it didn't make a lot of sense for the app's usecase. I first reversed the comment list, however I chose to instead get the data list directly from the database already sorted correctly by date. This was a small optimization that could be more useful on larger scale datasets.
+  - Comments created and stored in my local comments state won't have the time stamp that comes from the database immediately.  
    
 ### Things I Want to Add
 
 - [ ] Show the text limit for comments
 - [ ] Restrict commenting if one of the fields is empty. Maybe an error message
-- [x] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
+- [ ] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
 - [x] The wireframe showed dates within the current week as days of the week with their time, and anthing else as a date and the time. 
 
 ### Struggles
   - CSS :(
-
+  - Getting the CommentSection component to update its state when adding a comment from my input component
+    - Excessive fetching from the database (fixed by removing comments from the dependency array on my useEffect hook that got comments from the db)
+    - Getting the the data from the database only initially, and then maintaining a local state of comments for newly created comments
+    - Appending a local state of comments to my newly created comments was an issue because I was sorting newly creaded comments in order of oldest to newest, so they would appear under my entire list, which threw me for a while
+    - Maintaining the local state of comments introduced a new issue, tracking id's for deleting comments. This was something I'll want to fix in the future. Deleting is currently a little wierd, you need to refresh first to sync with the database comments, otherwise the components will reappear on refresh. 
 
