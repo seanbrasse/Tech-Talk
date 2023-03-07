@@ -36,7 +36,6 @@ const Input = ({handleNewComment}) => {
       createComment(name, title, message)
         .then(() => {
           handleNewComment({id: Math.random(), name, title, message})
-          // Clear the inputs
           setName('')
           setTitle('')
           setMessage('')
@@ -46,11 +45,6 @@ const Input = ({handleNewComment}) => {
 
     return (
         <section className='inputSection'>
-          {showPopup && (
-                <div className='popup'>
-                  <h3>Name and Message Fields are Required!</h3>
-                </div>
-              )}
             <div className='inputs'>
               <h2>Share Your Latest Tech News Here</h2>
               <TextInput
@@ -77,10 +71,15 @@ const Input = ({handleNewComment}) => {
                   maxChar = {900}
                   onChange = {handleMessageChange}
               />
-              <button className='submit' onClick={(event) => handleSubmit(event)}>
+          </div>
+          {showPopup && (
+                <div className='popup'>
+                  <h3>Name and Message Fields are Required!</h3>
+                </div>
+              )}
+          <button className='submit' onClick={(event) => handleSubmit(event)}>
                   <h2>Comment</h2>
               </button>
-          </div>
         </section>
     )
 }

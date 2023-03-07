@@ -77,8 +77,8 @@ $ npm run dev
 
 - [ ] Show the text limit for comments
 - [ ] Restrict commenting if one of the fields is empty. Maybe an error message
-- [ ] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
-- [ ] The wireframe showed dates within the current week as days of the week with their time, and anthing else as a date and the time. 
+- [x] Be able to delete comments. Doesn't exactly make sense for the usecase, but might be useful to show
+- [x] The wireframe showed dates within the current week as days of the week with their time, and anthing else as a date and the time. 
 
 ### Struggles
   - CSS :(

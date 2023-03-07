@@ -44,7 +44,6 @@
   justify-content: center;
   width: 70%;
   border-radius: 10px;
-  margin: 10px;
   color: red;
   opacity: 0.8;
 }
@@ -65,7 +64,7 @@ textarea {
   flex-direction: column;
   width: 700px;
   height: 400px;
-  margin: 10px;
+  margin: 10px 10px 0 10px;
 }
 
 .inputSection {
