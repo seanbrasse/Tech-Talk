@@ -84,6 +84,14 @@ Apologies in advance, I didn't want to spend too much time on this issue
 
 ----------------------
 
+### Screenshots
+![Screenshot 2023-03-07 at 6 46 59 PM](https://user-images.githubusercontent.com/43007609/223582084-91eee2b7-4cdc-41be-ae29-bc755d86600b.png)
+![Screenshot 2023-03-07 at 6 48 17 PM](https://user-images.githubusercontent.com/43007609/223582376-6596d27f-3e5b-4724-9fa3-80d67bf6ce80.png)
+![Screenshot 2023-03-07 at 6 48 22 PM](https://user-images.githubusercontent.com/43007609/223582022-c1b37b65-712d-4cfd-99ae-31a7caba0717.png)
+![Screenshot 2023-03-07 at 6 48 44 PM](https://user-images.githubusercontent.com/43007609/223582018-4907369c-31b0-48cf-89d6-9f8cc2ea57b7.png)
+![Screenshot 2023-03-07 at 6 56 27 PM](https://user-images.githubusercontent.com/43007609/223582690-5d2eda7d-0d9d-4350-a72b-998c8cd381c7.png)
+
+
 ### Optimizations I Implemented
 
 - Sorted comments in reverse chronological order to improve user experience. 
