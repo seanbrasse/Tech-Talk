@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { createComment } from '../utils'
 import TextInput from './TextInput'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Input = ({handleNewComment}) => {
 
@@ -8,6 +10,8 @@ const Input = ({handleNewComment}) => {
     const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
     const [showPopup, setShowPopup] = useState(false)
+
+    const uuid = uuidv4(); // This is a unique id that will be passed into each comment
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -34,9 +38,9 @@ const Input = ({handleNewComment}) => {
         setShowPopup(true)
         return;
       }
-      createComment(name, title, message)
+      createComment(uuid, name, title, message)
         .then(() => {
-          handleNewComment({id: Math.random(), name, title, message})
+          handleNewComment({uuid, name, title, message})
           setName('')
           setTitle('')
           setMessage('')

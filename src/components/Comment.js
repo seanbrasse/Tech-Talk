@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { deleteComment, formatDate } from '../utils'
 
-const Comment = ({ id, name, title, message, created, onDelete}) => {
+const Comment = ({ id, uuid, name, title, message, created, onDelete}) => {
 
     const handleDelete = () => {
-        deleteComment(id, onDelete);
+        deleteComment(uuid, onDelete);
     }
 
     return (

@@ -7,6 +7,7 @@ class Comment {
     const sql = `
     CREATE TABLE IF NOT EXISTS comments (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      uuid TEXT UNIQUE,
       name TEXT,
       title TEXT,
       message TEXT,
@@ -14,10 +15,10 @@ class Comment {
     return this.dataAccessObject.run(sql);
   }
 
-  deleteComment(id) {
+  deleteComment(uuid) {
     return this.dataAccessObject.run(
-      'DELETE FROM comments WHERE id = ?',
-      [id]
+      'DELETE FROM comments WHERE uuid = ?',
+      [uuid]
     ).then(result => {
       const success = result.changes > 0;
       return { success };
@@ -31,17 +32,17 @@ class Comment {
     return this.dataAccessObject.run(sql);
   }
 
-  createComment({ name, title, message }) {
+  createComment({ uuid, name, title, message }) {
     return this.dataAccessObject.run(
-      'INSERT INTO comments (name, title, message) VALUES (?, ?, ?)',
-      [name, title, message]
+      'INSERT INTO comments (uuid, name, title, message) VALUES (?, ?, ?, ?)',
+      [uuid, name, title, message]
     );
   }
 
-  getComment(id) {
+  getComment(uuid) {
     return this.dataAccessObject.get(
-      'SELECT * FROM comments WHERE id = ?',
-      [id]
+      'SELECT * FROM comments WHERE uuid = ?',
+      [uuid]
     );
   }
 

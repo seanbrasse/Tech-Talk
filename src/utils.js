@@ -23,9 +23,9 @@ export const formatDate = (created) => {
 
   
 
-export const createComment = async (name, title, message) => {
+export const createComment = async (uuid, name, title, message) => {
   // Build the body data to be sent in the post request
-  const body = { name, title, message };
+  const body = { uuid, name, title, message };
 
   try {
     // Call the post method of the Api component

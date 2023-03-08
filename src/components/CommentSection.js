@@ -3,15 +3,15 @@ import Comment from './Comment';
 
 const CommentSection = ({comments, setComments}) => {
 
-  const handleDelete = (id) => {
-    setComments(comments.filter(comment => comment.id !== id));
+  const handleDelete = (uuid) => {
+    setComments(comments.filter(comment => comment.uuid !== uuid));
   }
 
   const commentList = comments.map((comment) => {
     return (
       <Comment 
-        key = {comment.id}
-        id = {comment.id}
+        key = {comment.uuid}
+        id = {comment.uuid}
         onDelete={handleDelete}
         {...comment}
       />

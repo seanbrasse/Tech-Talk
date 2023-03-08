@@ -20,16 +20,16 @@ comment.createTable().catch(error => {
 });
 
 app.post('/createComment', function(request, response) {
-  const { name, title, message } = request.body;
-  comment.createComment({name, title, message}).then(result => {
+  const { uuid, name, title, message } = request.body;
+  comment.createComment({uuid, name, title, message}).then(result => {
     response.send(result);
   });
 });
  
 app.get('/getComment', function(request, response) {
   const { body } = request;
-  const { id } = body;
-  comment.getComment(id).then(result => {
+  const { uuid } = body;
+  comment.getComment(uuid).then(result => {
     response.send(result);
   });
 });
@@ -46,9 +46,9 @@ app.delete('/deleteComments', function(request, response) {
   });
 });
 
-app.delete('/deleteComment/:id', function(request, response) {
-  const { id } = request.params;
-  comment.deleteComment(id).then(result => {
+app.delete('/deleteComment/:uuid', function(request, response) {
+  const { uuid } = request.params;
+  comment.deleteComment(uuid).then(result => {
     response.send(result);
   });
 });
