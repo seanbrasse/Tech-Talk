@@ -96,7 +96,7 @@ Apologies in advance, I didn't want to spend too much time on this issue
 
 - Built a comment feed that displays all comments
 - Added a title (TEXT type) and uuid (TEXT UNIQUE type) fields to the database
-- Implemented deleting specfic posts
+- Implemented deleting specfic posts, and added a delete post by uuid endpoint
 - Added error popups for incorrect submissions (Inputs must include minimum a name and comment)
 - Made the application responsive, looks good in both web view and mobile view across most resolution sizes
 - Incuded an empty field message
@@ -115,7 +115,7 @@ Apologies in advance, I didn't want to spend too much time on this issue
 
   - Display maximum comment length to help users compose their comments effectively.
   - [x] Allow users to delete comments
-  - Implement a "delete all comments" function.
+  - Implement a "delete all comments" function. (This was an oversight on my part)
   - Add an auto-scroll feature that scrolls to the top of the page when you've scrolled too far down
   - Allow users to upload media files.
   - Enhance input restrictions to disallow non-meaningful content.
