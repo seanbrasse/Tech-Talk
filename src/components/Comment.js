@@ -10,7 +10,7 @@ const Comment = ({ id, uuid, name, title, message, created, onDelete}) => {
     }
 
     return (
-        <div className={'comment'}>
+        <div className='comment'>
             <h2>{title}</h2>
             <p className='message'>{message}</p>
             <div className='author'>

@@ -23,7 +23,7 @@ const CommentSection = ({comments, setComments}) => {
           <div className='commentTitle'>
             <h1 className='commentFeed'>Comment Feed</h1>
           </div>
-        <div>
+        <div className='feed'>
           {commentList.length > 0 ? commentList : <h3 className='noComments'>There are no comments to show, get us started!</h3>}
         </div>
     </section>
