@@ -103,7 +103,8 @@ Apologies in advance, I didn't want to spend too much time on this issue
 ### Additional Features to Add
 
   - Display maximum comment length to help users compose their comments effectively.
-  - Allow users to delete comments and implement a "delete all comments" function.
+  - [x] Allow users to delete comments
+  - Implement a "delete all comments" function.
   - Add an auto-scroll feature and allow users to upload media files.
   - Enhance input restrictions to disallow non-meaningful content.
   - Investigate periodic posting of data to optimize app speed for larger datasets.
@@ -119,7 +120,8 @@ Apologies in advance, I didn't want to spend too much time on this issue
     - Maintaining a local state of comments for newly created comments was necessary for triggering rerenders of my commentSection
     - Appending the local state of comments to my newly created comments was an issue because I was sorting newly creaded comments in order of oldest to newest, so they would appear under my entire list, which escaped me for a little too long
   - Maintaining the local state of comments introduced a new issue: tracking id's for deleting comments. This was something I'll want to fix in the future. Deleting is currently a little wierd, you need to refresh first to sync with the database comments, otherwise the components will reappear on refresh. One theory for fixing this is making an api to call the "MAX" query function on commentSection's initial render within our useEffect hook.
-      - This could also be fixed by storing a unique id in addition to the sqlite ascending id with each entry. This way, id's could be created with the comment and sent up to the database immediatley.
+      - This could also be fixed by storing a unique id in addition to the sqlite ascending id with each entry. This way, id's could be created with the comment and sent up to the database immediatley. **Update: I implemented a uuid column within the database and passed the uuid with name, title, and message when creating a comment and posting it to the database. Delete now works**
       - I think the delete issue also led to issues in unit tests involving deleting function which makes sense 
-  - Unit tests: writing unit tests is not my strongsuit and I'm hoping and working towards to get better at it. This app was tested manually and with some unit tests. It's very far from perfect
+  - Unit tests: writing unit tests is not my strongsuit and I'm hoping and working towards to get better at it. I broke a few unit tests with my addition of uuid's. Struggled to fix them immediatley, will come back to it. 
+      - This app was tested manually and with some unit tests. It's very far from perfect
 
