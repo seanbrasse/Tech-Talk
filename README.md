@@ -92,6 +92,17 @@ Apologies in advance, I didn't want to spend too much time on this issue
 ![Screenshot 2023-03-07 at 6 56 27 PM](https://user-images.githubusercontent.com/43007609/223582690-5d2eda7d-0d9d-4350-a72b-998c8cd381c7.png)
 
 
+### Functionality I Implemented
+
+- Built a comment feed that displays all comments
+- Added a title (TEXT type) and uuid (TEXT UNIQUE type) fields to the database
+- Implemented deleting specfic posts
+- Added error popups for incorrect submissions (Inputs must include minimum a name and comment)
+- Made the application responsive, looks good in both web view and mobile view across most resolution sizes
+- Incuded an empty field message
+- Added date manipulation so that if the post was created < 7 days ago, it shows the day of the week and the time. If the comment is from >= 7 days ago, it shows the date and the time.
+- Added client side caching
+
 ### Optimizations I Implemented
 
 - Sorted comments in reverse chronological order to improve user experience. 
@@ -105,11 +116,13 @@ Apologies in advance, I didn't want to spend too much time on this issue
   - Display maximum comment length to help users compose their comments effectively.
   - [x] Allow users to delete comments
   - Implement a "delete all comments" function.
-  - Add an auto-scroll feature and allow users to upload media files.
+  - Add an auto-scroll feature that scrolls to the top of the page when you've scrolled too far down
+  - Allow users to upload media files.
   - Enhance input restrictions to disallow non-meaningful content.
   - Investigate periodic posting of data to optimize app speed for larger datasets.
   - [x] Display dates of comments in a more readable format.
   - [x] Prevent empty fields when submitting comments and display an error message.
+  - An account creation system, so that different users could sign in and post, like a real forum
 
 ### Challenges I Overcame:
   - CSS :( 
@@ -123,5 +136,5 @@ Apologies in advance, I didn't want to spend too much time on this issue
       - This could also be fixed by storing a unique id in addition to the sqlite ascending id with each entry. This way, id's could be created with the comment and sent up to the database immediatley. **Update: I implemented a uuid column within the database and passed the uuid with name, title, and message when creating a comment and posting it to the database. Delete now works**
       - I think the delete issue also led to issues in unit tests involving deleting function which makes sense 
   - Unit tests: writing unit tests is not my strongsuit and I'm hoping and working towards to get better at it. I broke a few unit tests with my addition of uuid's. Struggled to fix them immediatley, will come back to it. 
-      - This app was tested manually and with some unit tests. It's very far from perfect
+      - This app was tested manually and with some unit tests which need work. It's very far from perfect, but I'm looking forward to improving it
 
