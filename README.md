@@ -123,6 +123,7 @@ Apologies in advance, I didn't want to spend too much time on this issue
   - [x] Display dates of comments in a more readable format.
   - [x] Prevent empty fields when submitting comments and display an error message.
   - An account creation system, so that different users could sign in and post, like a real forum
+  - Adding accessibilty features and integretion tests
 
 ### Challenges I Overcame:
   - CSS :( 
