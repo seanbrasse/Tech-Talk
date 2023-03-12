@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 const Navbar = () => {
+
     return (
         <div className='nav'>
             <FontAwesomeIcon className='chat' icon={faMessage} />
@@ -11,4 +12,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar 

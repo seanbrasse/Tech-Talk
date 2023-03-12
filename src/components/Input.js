@@ -3,16 +3,18 @@ import { createComment } from '../utils'
 import TextInput from './TextInput'
 import { v4 as uuidv4 } from 'uuid';
 
-
 const Input = ({handleNewComment}) => {
 
+    // Using state hooks to manage the state of the input fields and pop-up window.
     const [name, setName] = useState('')
     const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
     const [showPopup, setShowPopup] = useState(false)
 
-    const uuid = uuidv4(); // This is a unique id that will be passed into each comment
+    // Generating a unique ID for each comment using UUID
+    const uuid = uuidv4(); 
 
+    // Function to handle changes in the name input field.
     const handleNameChange = (event) => {
         setName(event.target.value);
         if (name && message) {
@@ -20,18 +22,20 @@ const Input = ({handleNewComment}) => {
         }
       };
 
-      const handleTitleChange = (event) => {
+    // Function to handle changes in the title input field.
+    const handleTitleChange = (event) => {
         setTitle(event.target.value);
-
       };
     
-      const handleMessageChange = (event) => {
+    // Function to handle changes in the message input field.
+    const handleMessageChange = (event) => {
         setMessage(event.target.value);
         if (name && message) {
           setShowPopup(false)
         }
       };
 
+    // Function to handle form submission.
     const handleSubmit = (event) => {
       console.log("Clicked submit")
       if (!name || !message){    
@@ -48,6 +52,7 @@ const Input = ({handleNewComment}) => {
         .catch((error) => console.log(error));
     };
 
+    // Returns a section containing input fields and a button for submitting comments.
     return (
         <section className='inputSection'>
             <div className='inputs'>
@@ -77,11 +82,15 @@ const Input = ({handleNewComment}) => {
                   onChange = {handleMessageChange}
               />
           </div>
+          
+          {/* Displays an error message if name and message fields are empty on form submission. */}
           {showPopup && (
                 <div className='popup'>
                   <h3>Name and Message Fields are Required!</h3>
                 </div>
               )}
+          
+          {/* Button to submit the comment form */}
           <button className='submit' onClick={(event) => handleSubmit(event)}>
                   <h2>Comment</h2>
           </button>
